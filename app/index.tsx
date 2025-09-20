@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
+import { Link } from 'expo-router'
 import React from 'react'
 import Logo from '../assets/img/adaptive-icon.png'
 
@@ -10,9 +11,9 @@ const Home = () => {
       <Text style={styles.title}>Home</Text>
       <Text style={styles.subtitle}>Welcome to the app</Text>
 
-      <View style={styles.card}>
-        <Text>Me is a card!</Text>
-      </View>
+      <Link href="/about" style={styles.card}>
+        <Text>Go to About Page</Text>
+      </Link>
     </View>
   )
 }

@@ -1,62 +1,12 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
-import { Link } from 'expo-router'
+import { View, StyleSheet } from 'react-native'
+import { usePathname } from 'expo-router'
+import { tabs } from './const'
+import TabItem from './TabItem'
 
-interface TabBarProps {
-  activeTab: string
-}
-
-interface TabItemProps {
-  id: string
-  label: string
-  iconName: keyof typeof Ionicons.glyphMap
-  isActive: boolean
-}
-
-function TabItem({ id, label, iconName, isActive }: TabItemProps) {
-  return (
-    <TouchableOpacity style={styles.tabItem} activeOpacity={0.7}>
-      <Ionicons
-        name={iconName}
-        size={24}
-        color={isActive ? '#4A90E2' : '#9CA3AF'}
-        style={styles.tabIcon}
-      />
-      <Link href={`/${id}`}>
-        <Text
-          style={[styles.tabLabel, { color: isActive ? '#4A90E2' : '#9CA3AF' }]}
-        >
-          {label}
-        </Text>
-      </Link>
-    </TouchableOpacity>
-  )
-}
-
-function TabBar({ activeTab }: TabBarProps) {
-  const tabs = [
-    {
-      id: 'cards',
-      label: 'Карточки',
-      iconName: 'card' as keyof typeof Ionicons.glyphMap,
-    },
-    {
-      id: 'library',
-      label: 'Библиотека',
-      iconName: 'library' as keyof typeof Ionicons.glyphMap,
-    },
-    {
-      id: 'stats',
-      label: 'Статистика',
-      iconName: 'stats-chart' as keyof typeof Ionicons.glyphMap,
-    },
-    {
-      id: 'settings',
-      label: 'Настройки',
-      iconName: 'settings' as keyof typeof Ionicons.glyphMap,
-    },
-  ]
+function TabBar() {
+  const pathname = usePathname()
+  const activeTab = pathname.slice(1)
 
   return (
     <View style={styles.container}>
@@ -66,8 +16,10 @@ function TabBar({ activeTab }: TabBarProps) {
             key={tab.id}
             id={tab.id}
             label={tab.label}
-            iconName={tab.iconName}
+            iconConfig={tab.iconConfig}
+            href={tab.href}
             isActive={activeTab === tab.id}
+            disabled={tab.disabled}
           />
         ))}
       </View>
@@ -88,7 +40,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#E5E7EB',
     paddingHorizontal: 16,
     paddingVertical: 8,
-    paddingBottom: 20, // для safe area
+    paddingBottom: 20,
   },
   tabContainer: {
     flexDirection: 'row',

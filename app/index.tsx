@@ -11,7 +11,7 @@ const Home = () => {
       <Text style={styles.title}>Home</Text>
       <Text style={styles.subtitle}>Welcome to the app</Text>
 
-      <Link href="/learning" style={styles.card}>
+      <Link href="/cards" style={styles.card}>
         <Text style={styles.cardText}>Перейти к обучению</Text>
       </Link>
     </View>

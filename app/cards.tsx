@@ -33,10 +33,10 @@ const words: Word[] = [
   },
 ]
 
-const Learning = () => {
+const Cards = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Learning Page</Text>
+      <Text style={styles.title}>Cards Page</Text>
       <Text style={styles.subtitle}>
         Добро пожаловать на страницу обучения!
       </Text>
@@ -51,7 +51,7 @@ const Learning = () => {
   )
 }
 
-export default Learning
+export default Cards
 
 const styles = StyleSheet.create({
   container: {

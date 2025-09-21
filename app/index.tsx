@@ -11,8 +11,8 @@ const Home = () => {
       <Text style={styles.title}>Home</Text>
       <Text style={styles.subtitle}>Welcome to the app</Text>
 
-      <Link href="/about" style={styles.card}>
-        <Text>Go to About Page</Text>
+      <Link href="/learning" style={styles.card}>
+        <Text style={styles.cardText}>Перейти к обучению</Text>
       </Link>
     </View>
   )
@@ -36,10 +36,23 @@ const styles = StyleSheet.create({
   },
   card: {
     marginTop: 20,
-    backgroundColor: 'gray',
-    padding: 10,
+    backgroundColor: '#4A90E2',
+    padding: 15,
     borderRadius: 10,
-    boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.5)',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  cardText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+    textAlign: 'center',
   },
   icon: {
     marginVertical: 20,

@@ -1,6 +1,7 @@
 import { Image, StyleSheet, View } from 'react-native'
 import React from 'react'
 import LearningCardWrapper from '../../entities/Learning/LearningCardWrapper'
+import { PlaybackButton } from '../../entities/Learning/PlaybackButton'
 
 interface Word {
   id: string
@@ -16,6 +17,14 @@ const LearningCard = ({ word }: { word: Word }) => {
         <View style={styles.imageContainer}>
           <Image source={{ uri: word.imageUrl }} style={styles.image} />
         </View>
+      </View>
+      <View style={styles.playbackButtons}>
+        {/* <PlaybackButton variant="speak" onPress={() => {}} /> */}
+        <PlaybackButton variant="play" onPress={() => {}} />
+        {/* <PlaybackButton variant="repeat" onPress={() => {}} /> */}
+        <PlaybackButton variant="slower" onPress={() => {}} />
+        <PlaybackButton variant="faster" onPress={() => {}} />
+        <PlaybackButton variant="next" onPress={() => {}} />
       </View>
     </LearningCardWrapper>
   )
@@ -47,5 +56,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  playbackButtons: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 16,
   },
 })

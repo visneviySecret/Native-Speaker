@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
-import { Link } from 'expo-router'
+import LearningCard from '../widgets/LearningCard/LearningCard'
 
 interface Word {
   id: string
@@ -36,17 +36,7 @@ const words: Word[] = [
 const Cards = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cards Page</Text>
-      <Text style={styles.subtitle}>
-        Добро пожаловать на страницу обучения!
-      </Text>
-      <Text style={styles.description}>
-        Здесь вы можете изучать новые языки и улучшать свои навыки.
-      </Text>
-
-      <Link href="/" style={styles.link}>
-        <Text style={styles.linkText}>Вернуться на главную</Text>
-      </Link>
+      <LearningCard word={words[0]} />
     </View>
   )
 }
@@ -59,43 +49,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#333',
-  },
-  subtitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    marginBottom: 15,
-    color: '#666',
-    textAlign: 'center',
-  },
-  description: {
-    fontSize: 16,
-    textAlign: 'center',
-    marginBottom: 30,
-    color: '#777',
-    lineHeight: 24,
-  },
-  link: {
-    backgroundColor: '#4A90E2',
-    padding: 15,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  linkText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '600',
   },
 })

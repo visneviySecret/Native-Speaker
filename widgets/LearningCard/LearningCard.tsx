@@ -2,15 +2,13 @@ import { Image, StyleSheet, View } from 'react-native'
 import React from 'react'
 import LearningCardWrapper from '../../entities/Learning/LearningCardWrapper'
 import { PlaybackButton } from '../../entities/Learning/PlaybackButton'
-
-interface Word {
-  id: string
-  word: string
-  hint: string
-  imageUrl: string
-}
+import { speakWord } from '../../shared/lib/speech'
+import { Word } from '../../app/cards'
 
 const LearningCard = ({ word }: { word: Word }) => {
+  const handlePlay = (speed: number = 1.0) => {
+    speakWord(word.speech, { rate: speed })
+  }
   return (
     <LearningCardWrapper>
       <View style={styles.imageWrapper}>
@@ -19,11 +17,9 @@ const LearningCard = ({ word }: { word: Word }) => {
         </View>
       </View>
       <View style={styles.playbackButtons}>
-        {/* <PlaybackButton variant="speak" onPress={() => {}} /> */}
-        <PlaybackButton variant="play" onPress={() => {}} />
-        {/* <PlaybackButton variant="repeat" onPress={() => {}} /> */}
-        <PlaybackButton variant="slower" onPress={() => {}} />
-        <PlaybackButton variant="faster" onPress={() => {}} />
+        <PlaybackButton variant="play" onPress={() => handlePlay()} />
+        <PlaybackButton variant="slower" onPress={() => handlePlay(0.4)} />
+        <PlaybackButton variant="faster" onPress={() => handlePlay(1.5)} />
         <PlaybackButton variant="next" onPress={() => {}} />
       </View>
     </LearningCardWrapper>

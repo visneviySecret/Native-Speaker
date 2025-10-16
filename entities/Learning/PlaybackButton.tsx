@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, StyleSheet, ViewStyle } from 'react-native'
+import { ViewStyle } from 'react-native'
+import { Play, RotateCcw, Rabbit, Turtle, Mic, ArrowBigRight } from 'lucide-react-native'
 import { Button } from '../../shared/ui/Button'
 
 interface PlaybackButtonProps {
@@ -13,17 +14,17 @@ export function PlaybackButton({ variant, onPress, disabled, style }: PlaybackBu
   const getIcon = () => {
     switch (variant) {
       case 'play':
-        return '▶'
+        return <Play size={24} color={getTextColor()} />
       case 'repeat':
-        return '↻'
+        return <RotateCcw size={24} color={getTextColor()} />
       case 'slower':
-        return '🐢'
+        return <Turtle size={24} color={getTextColor()} />
       case 'faster':
-        return '🐰'
+        return <Rabbit size={24} color={getTextColor()} />
       case 'speak':
-        return '🎤'
+        return <Mic size={24} color={getTextColor()} />
       case 'next':
-        return '→'
+        return <ArrowBigRight size={24} color={getTextColor()} />
     }
   }
 
@@ -64,15 +65,7 @@ export function PlaybackButton({ variant, onPress, disabled, style }: PlaybackBu
 
   return (
     <Button onPress={onPress} disabled={disabled} style={[getButtonStyle(), style]} size="icon">
-      <Text style={[styles.iconText, { color: getTextColor() }]}>{getIcon()}</Text>
+      {getIcon()}
     </Button>
   )
 }
-
-const styles = StyleSheet.create({
-  iconText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-})
